@@ -3,77 +3,86 @@ const {Videogame, Genre} = require('../db');
 const Videogames = require('../models/Videogames');
 const {API_KEY} = process.env;
 
-async function addVideogame (req, res) {
-    var  { name, description, rating, plataforms, release_date, game_genres } = req.body;
-    if(!name || !description || !rating || !plataforms) {
-        res.status(400).json({
-            error: 'Complete the form!'
-        })
-    }else{
-    if(!release_date){
-        release_date = null;
-    }
-    
-    const videogame = await Videogame.create({
-        name,
-        description,
-        rating,
-        plataforms,
-        release_date,
-       
-    });
-    // Buscamos id del genero en la base de datos
-    if(game_genres){game_genres.forEach( async (genre) => {
-    const genero = await Genre.findOne({
-        where: {
-            name: genre
-        }
-    })
-    await videogame.setGenres(genero)
-    })
-    }
-    res.json(videogame)
-    }
 
+async function addVideogame (req, res) {
+    const { name, description, released, rating, platforms, image, genres} = req.body;
+    try {
+        let createGame = await VideoGame.create({
+            name,
+            description, 
+            released, 
+            rating, 
+            image,
+            platforms
+            //platforms: platforms.split(',')
+        })
+        if (genres) {
+            let gameWithGenre = await createGame.setGenres(genres)
+        }     
+            res.json(createGame);
+
+    } catch(err) {
+        res.send(err)
+    }
 };
 
 async function getVideogameById (req, res, next) {
-    const { id } = req.params;
-    if(isNaN(id)){
-        try{
-            const videogame = await Videogame.findOne({
-                where: {
-                    id: id
-                },
-                include: Genre
-            })
-            res.json(videogame)
-        }
-        catch(error){
-            next({error: 'No se encontro el videojuego'})
-        }
-    }
-    else{
-        const response = await axios.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`)
-        const data = await response.json()
-        const platforms = [];
-        data.parent_platforms.forEach(platform => {
-            platforms.push(platform.platform.name)
-        })
-        const videogameApi = {
-            name: data.name,
-            id: data.id,
-            description: data.description,
-            rating: data.rating_top,
-            plataforms: platforms.join(', '),
-            release_date: data.released,
-            game_genres: data.genres.map(genre => genre.name).join(', '),
-            background_image: data.background_image,
-    }
-    res.json(videogameApi)
-    }
 
-};
+        const { id } = req.params;
+        try {
+            if (id.length > 7) {
+                let getForId = await VideoGame.findOne({
+                    where: {
+                        id: id
+                    },
+                    include: [{
+                        model: Genre,
+                        attributes: ['id', 'name'],
+                        through: {
+                          attributes: []
+                          } 
+                    }]
+                })           
+                //console.log('GAME IDDDD: ', getForId)
+                res.json(getForId ? getForId : 'No se encontró jueguito con ese ID');
+                
+            } else {
+                let gameApiPromise = await axios.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`);
+    
+                gameApiPromise = gameApiPromise.data;
+                //console.log("GENEROSS: ", gameApiPromise.genres);
+                let apiGame = {
+                    id: gameApiPromise.id,
+                    name: gameApiPromise.name,
+                    image: gameApiPromise.background_image,
+                    description: gameApiPromise.description,
+                    released: gameApiPromise.released,
+                    rating: gameApiPromise.rating,
+                    platforms: gameApiPromise.platforms.map(plat => {
+                        return {
+                            id: plat.platform.slug,
+                            name: plat.platform.name,
+                            platImage: plat.platform.image_background
+                        }
+                    }),
+                    Genres: gameApiPromise.genres.map(genre => {
+                        return {
+                            id: genre.slug,
+                            name: genre.name
+                        }
+                    })
+                }
+                //console.log("API GAMEEE: ", apiGame)
+                res.json(apiGame ? apiGame : 'No se encontró jueguito con ese ID');
+            }
+            
+        } catch(err) {
+            res.send(err);
+        }
+    
+    };
+
+
 
 async function getVideogameByName (req, res, next) {
     const { name } = req.params;
