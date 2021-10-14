@@ -1,0 +1,41 @@
+.intro-container {
+    margin-top: 12vh;
+    background-image: url(img/carl-raw-m3hn2Kn5Bns-unsplash.jpg);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    background-position: center;
+    align-items: center;
+    justify-content: center;
+    height: 88vh;
+    .intro-text{
+        font-size: 2rem;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        transition: 0.3s linear;
+        background-color: rgba(0,0,0,0.5);
+        padding: 0,5rem;
+        border-radius: 1rem;
+    }
+    .intro-link{
+        text-decoration: none;
+        
+        .intro-home-link{
+            background-color: #E7003E;
+            color: #f8c417;
+            padding: 1rem;
+            font-weight: bold;
+            display: block;
+            padding: 0.5rem 1rem;
+            transition: 0.3s linear;
+            border-radius: 5px;
+        
+        &:hover{
+            background-color: #f8c417;
+            color: #E7003E;   
+        }
+    }
+
+    }
+
+}
