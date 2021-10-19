@@ -1,15 +1,17 @@
 .intro-container {
-    margin-top: 12vh;
-    // background-image: url(img/carl-raw-m3hn2Kn5Bns-unsplash.jpg);
+    // margin-top: 10vh;
+    background-image: url(img/ak-47.jpg);
     background-size: cover;
     display: flex;
     flex-direction: column;
     background-position: center;
     align-items: center;
     justify-content: center;
-    height: 88vh;
+    height: 100vh;
     .intro-text{
-        font-size: 2rem;
+        margin-bottom: 60vh;
+        margin-left: 120vh;
+        font-size: 1rem;
         color: #fff;
         padding: 0.5rem 1rem;
         transition: 0.3s linear;
@@ -21,18 +23,18 @@
         text-decoration: none;
         
         .intro-home-link{
-            background-color: #E7003E;
-            color: #f8c417;
-            padding: 1rem;
+            background-color: #2196F3;
+            color: #f0ede5;
+            padding: 3rem;
             font-weight: bold;
             display: block;
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 1.5rem;
             transition: 0.3s linear;
             border-radius: 5px;
         
         &:hover{
-            background-color: #f8c417;
-            color: #E7003E;   
+            background-color: #E7003E;
+            color: #f0ede5;  
         }
     }
 

@@ -20,9 +20,6 @@ export const getVideogameById = (id) => {
 }
 
 
-
-
-
 export const fetchListGames = () => {
     return (dispatch) => {
         dispatch(fetchListGamesRequest());

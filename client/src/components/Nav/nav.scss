@@ -1,0 +1,57 @@
+$primary: #f0ede5;
+$secondary: #E7003E;
+
+.header{
+    background:#141414;
+    color: white;
+    padding: 2rem 0;
+    position: fixed;
+    left: 0%;
+    top:0%;
+    width: 100%;
+    a {
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+    }
+    .logo-nav-container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        .logo {
+            letter-spacing: 15px;
+            font-size: 1.2em;
+            margin-left: 4rem;
+        }
+        .navigation ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            li{
+                display: inline-block;
+                margin-right: 3rem;
+                
+                    .createYourGame{
+                        background-color: $secondary;
+                        color: $primary;
+                        &:hover{
+                            background-color: #2196F3;
+                            color: white; 
+                        }
+                    }
+
+                a {
+                    font-weight: bold;
+                    display: block;
+                    padding: 0.5rem 1rem;
+                    transition: 0.3s linear;
+                    border-radius: 5px;
+                    &:hover{
+                        background: #2196F3;
+                    }
+                }
+            }
+        }
+    }
+}

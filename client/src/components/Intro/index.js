@@ -9,11 +9,11 @@ export default function Intro(){
     <div className="intro-container">
         <div className="intro-text">
             <h1>VIDEOGAMES APP</h1>
-            <h3>by Francisco Alderete</h3>
+            <h3>by Francisco Javier Alderete</h3>
         </div>
         <div>
             <Link className="intro-link" to="/home">
-                <h4 className="intro-home-link">Go to home!</h4>
+                <h4 className="intro-home-link">START</h4>
             </Link>
         </div>
     </div>

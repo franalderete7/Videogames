@@ -1,0 +1,89 @@
+$primary: #2196F3;
+$secondary: #E7003E;
+
+.creategame-main{
+    margin-top: 12vh;
+    color: white;
+    
+    h1{
+        font-size: 2rem;
+        text-align: center;
+    }
+
+}
+.form-container{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: 0 auto;
+    .input-error{
+        border: 4px solid $secondary
+    }
+    select{
+        border: 4px solid $primary;
+        border-radius: 0.5rem;
+        height: 2rem;
+        font-size: 1.5rem;  
+    }
+    input{
+        border: 4px solid $primary;
+        border-radius: 0.5rem;
+        height: 2rem;
+        font-size: 1.5rem;
+      
+    }
+    textarea{
+        border: 2px solid $primary;
+        border-radius: 0.5rem;
+        height: 2rem;
+        font-size: 1.5rem;
+    }
+    .genres-container{
+        .checkbox-container{
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            height: 10vh;
+            }
+        .selected-genres{
+            background-color: $primary;
+            border-radius: 0.5rem;
+            text-align: center;
+            color: black;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+        }
+    .form-submit{
+        background: $secondary;
+        color: white;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        text-align: center;
+        height: 4rem;
+        font-weight: bold;
+        transition: 0.3s linear;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        
+        &:hover{
+            background-color: $primary;
+            color: white; 
+        }
+    }
+    input:disabled, input[disabled] {
+        background: #ccc;
+        color: #666;
+        cursor: not-allowed;
+        &:hover{
+            background: #666;
+            color: #ccc
+
+        }
+    }
+    .alert{
+        color: $secondary;
+        transition: 0.3s linear;
+    }
+}

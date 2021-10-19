@@ -1,0 +1,30 @@
+.videogame-container{
+    margin-top: 12vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    .videogame-data{
+        display: flex;
+        justify-content: space-evenly;
+        width: 60%;
+    }
+    .videogame-name{
+        background-color: #E7003E;
+        color: #f0ede3;
+        padding: 1rem;
+        border-radius: 1rem;
+    }
+    .videogame-description{
+        width: 60%;
+        text-align: center;
+    }
+
+    .videogame-img{
+        width: 100%;
+        img{
+            width: 100%
+        }
+    }
+}
