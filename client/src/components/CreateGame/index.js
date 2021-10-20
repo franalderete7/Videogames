@@ -1,6 +1,7 @@
 import React, {useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGenreList } from "../../Redux/actions";
+// import axios from "axios";
 
 import './creategame.scss'
 
@@ -55,6 +56,17 @@ export default function CreateGame() {
             alert(data.error)
         }
     };
+
+    // async function handleSubmit(e) {
+    //   e.preventDefault();
+    //    const response =  await axios.post("http://localhost:3001/videogames/add", newGame)
+    //     .then(response => {
+    //       console.log(response.data.data)
+    //             if(response.data.message === "juego creado"){
+    //                 window.location.href = `/gamecreated` 
+
+    //             }})
+    //           }
 
 
 

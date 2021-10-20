@@ -9,6 +9,7 @@
     justify-content: center;
     height: 100vh;
     .intro-text{
+        flex-wrap: wrap;
         margin-bottom: 60vh;
         margin-left: 120vh;
         font-size: 1rem;
@@ -23,6 +24,7 @@
         text-decoration: none;
         
         .intro-home-link{
+            flex-wrap: wrap;
             background-color: #2196F3;
             color: #f0ede5;
             padding: 3rem;

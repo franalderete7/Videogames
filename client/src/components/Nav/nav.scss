@@ -19,12 +19,14 @@ $secondary: #E7003E;
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
+        flex-basis: 100%;
         .logo {
             letter-spacing: 15px;
             font-size: 1.2em;
             margin-left: 4rem;
         }
         .navigation ul {
+            flex-wrap: wrap;
             margin: 0;
             padding: 0;
             list-style: none;
@@ -35,6 +37,7 @@ $secondary: #E7003E;
                     .createYourGame{
                         background-color: $secondary;
                         color: $primary;
+                        order: 1;
                         &:hover{
                             background-color: #2196F3;
                             color: white; 

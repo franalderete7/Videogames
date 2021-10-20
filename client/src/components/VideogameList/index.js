@@ -68,14 +68,16 @@ export function VideogameList() {
                         onChange={handleChange}
                         type="text" 
                         className="input-search" 
-                        placeholder="Search a videogame" 
+                        placeholder="Search a videogame..." 
                     />
-                    <button type="submit" className="search-logo"><i className="fa fa-search"></i></button>
+                    <button type="submit" className="search-logo">
+                        🔍
+                    </button>
                 </div>
             </div>
             <div className="filters">
-                <div className="genre-filter">
-                    <h1>
+                <div className="filter">
+                    <h1 >
                         Filter by genre:
                     </h1>
                     <select
@@ -92,8 +94,8 @@ export function VideogameList() {
                     }     
                     </select>
                 </div>
-                <div>
-                    <h1>
+                <div className="filter">
+                    <h1 >
                         Sort by rating:
                     </h1>
                     <select
@@ -107,8 +109,8 @@ export function VideogameList() {
                         <option value="Low to High">Low to High</option>
                     </select>
                 </div>
-                <div>
-                    <h1>
+                <div className="filter" >
+                    <h1 >
                         Sort by origin:
                     </h1>
                     <select
@@ -122,8 +124,8 @@ export function VideogameList() {
                         <option value="Database">Database</option> 
                     </select>
                 </div>
-                <div className="sort-filter">
-                <h1>
+                <div className="filter">
+                <h1 >
                     Sort by name:
                 </h1>
                 <select
