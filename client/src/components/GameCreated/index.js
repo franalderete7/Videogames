@@ -6,13 +6,13 @@ export function GameCreated() {
 
     return (
         <div>
-            <div className="wait"> 
-            Juego creado, regresando al home en {setTimeout(() => {
+            <div> 
+            Game created, returning home in {setTimeout(() => {
             window.location.href = 'http://localhost:3000/home'
-            }, 3000)} segundo... 
+            }, 3000)} seconds...
             </div>
-            <p className="wait"> 
-            Podra visalizar el juego ingresado y sus detalles en la base de datos desde el home 
+            <p> 
+            You'll see the game created and its details in the database from home    
             </p>
         </div>
             

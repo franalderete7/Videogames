@@ -1,7 +1,7 @@
 import React, {useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGenreList } from "../../Redux/actions";
-// import axios from "axios";
+import axios from 'axios';
 
 import './creategame.scss'
 
@@ -19,6 +19,7 @@ export default function CreateGame() {
         game_genres: [],
         plataforms: "",
     });
+
     //handleChange para cada checkbox
 
     const handleChangeGenres = (e) => {
@@ -42,34 +43,17 @@ export default function CreateGame() {
         });
     };
    
+
     async function handleSubmit(e) {
-        const response = await fetch("http://localhost:3001/videogames/add", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-            },
-            body: JSON.stringify(newGame),
-        });
-        const data = await response.json();
-        if(data.error){
-            alert(data.error)
-        }
-    };
+      e.preventDefault();
+       const response =  await axios.post("http://localhost:3001/videogames/add", newGame)
+        .then((response) => {
+          console.log(response.data)
+                if(response.data.message === "game created"){
+                    window.location.href = `/gamecreated` 
+                }})
 
-    // async function handleSubmit(e) {
-    //   e.preventDefault();
-    //    const response =  await axios.post("http://localhost:3001/videogames/add", newGame)
-    //     .then(response => {
-    //       console.log(response.data.data)
-    //             if(response.data.message === "juego creado"){
-    //                 window.location.href = `/gamecreated` 
-
-    //             }})
-    //           }
-
-
-
+      };
 
 
 
@@ -106,7 +90,6 @@ export default function CreateGame() {
         {/* {!newGame.release_date && <p className="alert">*Please enter a release date</p>} */}
   
         <h2>Rating:</h2>
-        {!newGame.rating && <p className="alert">*Please enter a rating</p>}
             <select 
             name="rating" 
             value={newGame.rating} 
@@ -120,6 +103,7 @@ export default function CreateGame() {
               <option>4</option>
               <option>5</option>
             </select>
+            {!newGame.rating && <p className="alert">*Please enter a rating</p>}
           <h2>Platforms:</h2>
           <input 
           type="text" 
@@ -129,7 +113,7 @@ export default function CreateGame() {
           onChange={handleChange} 
           required
           />
-          {!newGame.plataforms && <p className="alert">*Please enter a platforms</p>}
+          {!newGame.plataforms && <p className="alert">*Please enter a platform</p>}
         <div className="genres-container">
           <h2>Genres:</h2>
           <p className="selected-genres">{newGame.game_genres.join(' - ')}</p>

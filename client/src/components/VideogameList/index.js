@@ -33,7 +33,7 @@ export function VideogameList() {
         // DB array de objetos juegos... genres ... [name]
         
         if (filters.search.length > 0) return listGames.filter(game => game.name.toLowerCase().includes(filters.search.toLowerCase())).slice(currentPage, currentPage + 15);
-        if (filters.filter.length > 0) return listGames.filter(game => game.game_genres.split(', ').includes(filters.filter)).slice(currentPage, currentPage + 15);
+        if (filters.filter.length > 0) return listGames.filter(game => game.game_genres.split(' - ').includes(filters.filter)).slice(currentPage, currentPage + 15);
         if (filters.sort === 'A-Z') return listGames.sort((a, b) => a.name.localeCompare(b.name)).slice(currentPage, currentPage + 15);
         if (filters.sort === 'Z-A') return listGames.sort((a, b) => b.name.localeCompare(a.name)).slice(currentPage, currentPage + 15);
         if (filters.sortOrigin === 'API') return listGames.filter(game => !(isNaN(game.id))).slice(currentPage, currentPage + 15);
@@ -61,18 +61,16 @@ export function VideogameList() {
       return (
         <>
             <div className="search-bar">
-                <div className="search-form">
-                    <input
-                        name="search" 
-                        value={filters.search}
-                        onChange={handleChange}
-                        type="text" 
-                        className="input-search" 
-                        placeholder="Search a videogame..." 
-                    />
-                    <button type="submit" className="search-logo">
-                        🔍
-                    </button>
+                <div class="searchInputWrapper">
+                <input 
+                 name="search"
+                 value={filters.search}
+                 onChange={handleChange}
+                 className="searchInput" 
+                 type="text" 
+                 placeholder='Search a videogame...'>
+                </input>
+                <i className="searchInputIcon fa fa-search"></i>
                 </div>
             </div>
             <div className="filters">
@@ -111,7 +109,7 @@ export function VideogameList() {
                 </div>
                 <div className="filter" >
                     <h1 >
-                        Sort by origin:
+                        Filter by origin:
                     </h1>
                     <select
                         name="sortOrigin"
@@ -184,7 +182,7 @@ export function VideogameList() {
                 <button
                     className="pagination-button"
                     onClick={nextPage}
-                    disabled={filteredGames().length < 9}
+                    disabled={filteredGames().length < 15}
                 >
                     Next
                 </button>

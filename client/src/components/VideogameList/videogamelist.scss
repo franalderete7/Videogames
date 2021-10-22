@@ -1,13 +1,13 @@
 $primary: #f8c417;
 $secondary: #E7003E;
 $blue: #2196F3;
+
 .spinner-container{
     height: 50vh;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-
 
 .spinner{  
         display: inline-block;
@@ -42,43 +42,47 @@ $blue: #2196F3;
     height: 50vh;
     width: 100%;
     background-position: center;
-    .search-form {
-        display: flex;
-        width: 30%;
-        height: 10%;
-        .input-search{
-            padding: 10px;
-            font-size: 17px;
-            // border: 1px solid grey;
-            float: left;
-            width: 80%;
-            background: #f1f1f1;
-            border: 4px solid $blue;
-            border-radius: 0.5rem;
-            background-color: rgb(255, 255, 255);
-            color: rgb(53, 49, 49);
-            // height: 2rem;
-            // font-size: 1.5rem; 
-        }
-        .search-logo {
-            float: left;
-            width: 20%;
-            padding: 10px;
-            background: #2196F3;
-            color: white;
-            font-size: 12px;
-            border: 1px solid grey;
-            border: 4px solid $blue;
-            border-radius: 0.5rem;
-            border-left: none; /* Prevent double borders */
-            padding-bottom: 20px;
-            text-align: center;
-            vertical-align: middle;
-            
-        }
-        
-    }
+
+    .searchInputWrapper {
+        position: static;
+      }
+      
+      .searchInput {
+        width: 20rem;
+        height: 2rem;
+        padding: 0 1rem; 
+        border-radius: 0.5rem;
+        border: 4px solid $blue;
+        transition: transform 0.1s ease-in-out;
+      }
+      
+      ::placeholder {
+        color: #a1a1a1;
+      }
+      
+      /* hide the placeholder text on focus */
+      :focus::placeholder {
+        text-indent: -999px
+      }
+      
+      .searchInput:focus {
+        outline: none;
+        transform: scale(1.1);
+        transition: all 0.1s ease-in-out;
+      }
+      
+      .searchInputIcon {
+        position: absolute;
+        right: 0.8rem;
+        top: 0.5rem;
+        color: #a1a1a1;
+        transition: all 0.1s ease-in-out;
+      }
+      .searchInputWrapper > .searchInputIcon {
+        right: 0.2rem;
+      }
 }
+
 .filters {
     display: flex;  
     justify-content: space-around;
@@ -89,6 +93,7 @@ $blue: #2196F3;
         border: 4px solid $blue;
         border-radius: 0.5rem;
         height: 2rem;
+        width: 150px;
         font-size: 1rem; 
        }
        .filter{
@@ -97,17 +102,14 @@ $blue: #2196F3;
 }
 
 
-
-
-
 .list-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
          .list-item {
-            // border: 4px solid #4d4d4de8;
             display: flex;
             flex-direction: column;
+            position: static;
             justify-content: center;
             align-items: center;
             margin: 2rem;
