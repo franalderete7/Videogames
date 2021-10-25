@@ -9,7 +9,7 @@ export default function Nav(){
             <div className="container logo-nav-container">
                 <a href="/" className="logo">VIDEOGAMES</a>
                 <nav className="navigation">
-                <ul clasName="show">
+                <ul className="show">
                     <li>
                         <a href="/home">Home</a>
                     </li>

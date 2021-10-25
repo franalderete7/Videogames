@@ -13,7 +13,7 @@ export function Videogame() {
     useEffect(() => {
         dispatch(getVideogameById(id));
         console.log('hola');
-    }, [dispatch]);
+    }, [dispatch, id]);
     
 
   return (

@@ -25,8 +25,11 @@ export function VideogameList() {
         filter: "",
         sort: "",
         sortOrigin: "",
-        ratingSort: ""
+        ratingSort: "",
+        platformsort: "",
+        // release_dateSort: "",
     });
+
 
     const filteredGames = () => {
         // API array de objetos juegos... game_genres
@@ -40,15 +43,30 @@ export function VideogameList() {
         if (filters.sortOrigin === 'Database') return listGames.filter(game => isNaN(game.id)).slice(currentPage, currentPage + 15);
         if (filters.ratingSort === 'High to Low') return listGames.sort((a, b) => b.rating - a.rating).slice(currentPage, currentPage + 15);
         if (filters.ratingSort === 'Low to High') return listGames.sort((a, b) => a.rating - b.rating).slice(currentPage, currentPage + 15);
+        // if (filters.release_dateSort === 'Recent to Older') return listGames.sort((a, b) => new Date(b.release_date) - new Date(a.release_date)).slice(currentPage, currentPage + 15);
+        // if (filters.release_dateSort === 'Older to Recent') return listGames.sort((a, b) => new Date(a.release_date) - new Date(b.release_date)).slice(currentPage, currentPage + 15);
         else return listGames.slice(currentPage, currentPage + 15)
-    }
+    };
+
+
+
     const nextPage = () => {
             setCurrentPage(currentPage + 15);
     
     }
     const prevPage = () => {
         setCurrentPage(currentPage - 15);
+
     }
+
+    // useEffect(() => {
+    //     setFilters(JSON.parse(window.localStorage.getItem('filters')));
+    //   }, []);
+    
+    //   useEffect(() => {
+    //     window.localStorage.setItem('filters', filters);
+    //   }, [filters]);
+
     const handleChange = (e) => {
         setCurrentPage(0);
         setFilters({
@@ -61,7 +79,7 @@ export function VideogameList() {
       return (
         <>
             <div className="search-bar">
-                <div class="searchInputWrapper">
+                <div className="searchInputWrapper">
                 <input 
                  name="search"
                  value={filters.search}
@@ -107,6 +125,21 @@ export function VideogameList() {
                         <option value="Low to High">Low to High</option>
                     </select>
                 </div>
+                {/* <div className="filter">
+                    <h1 >
+                        Sort by release_date:
+                    </h1>
+                    <select
+                    name="release_dateSort"
+                    value={filters.release_dateSort}
+                    onChange={handleChange}
+                    className="select-release-date"
+                    >
+                        <option value=""></option>
+                        <option value="Recent to Older">Recent to Older</option>
+                        <option value="Older to Recent">Older to Recent</option>
+                    </select>
+                </div> */}
                 <div className="filter" >
                     <h1 >
                         Filter by origin:
@@ -143,7 +176,7 @@ export function VideogameList() {
                 </select>
                 </div>
             </div>
-            {listGames.length === 0 ?<div className="spinner-container"> <div class="spinner"></div></div> : 
+            {listGames.length === 0 ?<div className="spinner-container"> <div className="spinner"></div></div> : 
              filteredGames().length === 0 ? <h1 className="games-not-found">No games found</h1> :  
             <div className="list-container">
                 {filteredGames().map(game =>

@@ -46,14 +46,19 @@ export default function CreateGame() {
 
     async function handleSubmit(e) {
       e.preventDefault();
-       const response =  await axios.post("http://localhost:3001/videogames/add", newGame)
-        .then((response) => {
+       await axios.post("http://localhost:3001/videogames/add", newGame)
+        .then(response => {
           console.log(response.data)
                 if(response.data.message === "game created"){
                     window.location.href = `/gamecreated` 
                 }})
 
       };
+
+    //   e.preventDefault()
+    // if(Object.keys(errors).length === 0)
+    // {dispatch(createRecipe(input))
+    //   alert("recipe created!") 
 
 
 
