@@ -27,13 +27,5 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // background_image: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    // },
-    // game_genres: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    // },
   });
 };

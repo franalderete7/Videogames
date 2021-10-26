@@ -2,7 +2,6 @@ import React, {useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router";
 import { getVideogameById } from '../../Redux/actions'
-// import ReactHtmlParser from 'react-html-parser';
 import './videogame.scss'
 
 
@@ -30,8 +29,7 @@ export function Videogame() {
       </h4>
       </div>
      <p className="videogame-description">{videogame.description ? videogame.description.replace(/<[^>]+>/g, '') : videogame.description}</p>
-     {//ReactHtmlParser(videogame.description) 
-    }
+
     
      <img className="videogame-img" src={videogame.background_image ?
               videogame.background_image :

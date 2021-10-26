@@ -55,12 +55,6 @@ export default function CreateGame() {
 
       };
 
-    //   e.preventDefault()
-    // if(Object.keys(errors).length === 0)
-    // {dispatch(createRecipe(input))
-    //   alert("recipe created!") 
-
-
 
 
   return (

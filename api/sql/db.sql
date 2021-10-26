@@ -1,0 +1,14 @@
+CREATE TABLE IF NOT EXISTS Videogame (
+  name VARCHAR(255) NOT NULL,
+  description TEXT NOT NULL,
+  release_date DATE,
+  rating FLOAT,
+  plataforms VARCHAR(255) NOT NULL,
+  id SERIAL PRIMARY KEY,
+);
+
+CREATE TABLE IF NOT EXISTS Genre (
+  name VARCHAR(255) NOT NULL,
+  id SERIAL PRIMARY KEY,
+);
+
