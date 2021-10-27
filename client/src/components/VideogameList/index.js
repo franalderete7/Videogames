@@ -27,7 +27,6 @@ export function VideogameList() {
         sortOrigin: "",
         ratingSort: "",
         platformsort: "",
-        // release_dateSort: "",
     });
 
 
@@ -43,8 +42,6 @@ export function VideogameList() {
         if (filters.sortOrigin === 'Database') return listGames.filter(game => isNaN(game.id)).slice(currentPage, currentPage + 15);
         if (filters.ratingSort === 'High to Low') return listGames.sort((a, b) => b.rating - a.rating).slice(currentPage, currentPage + 15);
         if (filters.ratingSort === 'Low to High') return listGames.sort((a, b) => a.rating - b.rating).slice(currentPage, currentPage + 15);
-        // if (filters.release_dateSort === 'Recent to Older') return listGames.sort((a, b) => new Date(b.release_date) - new Date(a.release_date)).slice(currentPage, currentPage + 15);
-        // if (filters.release_dateSort === 'Older to Recent') return listGames.sort((a, b) => new Date(a.release_date) - new Date(b.release_date)).slice(currentPage, currentPage + 15);
         else return listGames.slice(currentPage, currentPage + 15)
     };
 
@@ -59,13 +56,6 @@ export function VideogameList() {
 
     }
 
-    // useEffect(() => {
-    //     setFilters(JSON.parse(window.localStorage.getItem('filters')));
-    //   }, []);
-    
-    //   useEffect(() => {
-    //     window.localStorage.setItem('filters', filters);
-    //   }, [filters]);
 
     const handleChange = (e) => {
         setCurrentPage(0);
@@ -125,21 +115,6 @@ export function VideogameList() {
                         <option value="Low to High">Low to High</option>
                     </select>
                 </div>
-                {/* <div className="filter">
-                    <h1 >
-                        Sort by release_date:
-                    </h1>
-                    <select
-                    name="release_dateSort"
-                    value={filters.release_dateSort}
-                    onChange={handleChange}
-                    className="select-release-date"
-                    >
-                        <option value=""></option>
-                        <option value="Recent to Older">Recent to Older</option>
-                        <option value="Older to Recent">Older to Recent</option>
-                    </select>
-                </div> */}
                 <div className="filter" >
                     <h1 >
                         Filter by origin:
