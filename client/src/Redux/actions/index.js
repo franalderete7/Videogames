@@ -19,6 +19,28 @@ export const getVideogameById = (id) => {
     }
 }
 
+// export const getVideogameByI = (id) => {
+//     return async (dispatch) => {
+   
+//         try {
+
+//         const response = (await axios.get(`http://localhost:3001/videogames/?id=${id}`)).data
+//         dispatch({
+//             type: 'GET_VIDEOGAME_BY_ID',
+//             payload: response
+//         });
+        
+//     } catch (err) {
+//         dispatch({
+//             type: 'GET_VIDEOGAME_BY_ID_ERROR',
+//             payload: err
+//         })
+
+//     }
+// }
+// };
+    
+
 
 export const fetchListGames = () => {
     return (dispatch) => {

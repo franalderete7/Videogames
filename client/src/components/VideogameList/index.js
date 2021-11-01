@@ -33,16 +33,31 @@ export function VideogameList() {
     const filteredGames = () => {
         // API array de objetos juegos... game_genres
         // DB array de objetos juegos... genres ... [name]
+
+        let list = listGames
+
+        if (filters.search.length > 0) list = list.filter(game => game.name.toLowerCase().includes(filters.search.toLowerCase()));
+        if (filters.filter.length > 0) list = list.filter(game => game.game_genres.split(' - ').includes(filters.filter));
+        if (filters.sort === 'A-Z') list = list.sort((a, b) => a.name.localeCompare(b.name));
+        if (filters.sort === 'Z-A') list = list.sort((a, b) => b.name.localeCompare(a.name));
+        if (filters.sortOrigin === 'API') list = list.filter(game => !(isNaN(game.id)));
+        if (filters.sortOrigin === 'Database') list = list.filter(game => isNaN(game.id));
+        if (filters.ratingSort === 'High to Low') list = list.sort((a, b) => b.rating - a.rating);
+        if (filters.ratingSort === 'Low to High') list = list.sort((a, b) => a.rating - b.rating);
+        return list.slice(currentPage, currentPage + 15)
+
+
+
         
-        if (filters.search.length > 0) return listGames.filter(game => game.name.toLowerCase().includes(filters.search.toLowerCase())).slice(currentPage, currentPage + 15);
-        if (filters.filter.length > 0) return listGames.filter(game => game.game_genres.split(' - ').includes(filters.filter)).slice(currentPage, currentPage + 15);
-        if (filters.sort === 'A-Z') return listGames.sort((a, b) => a.name.localeCompare(b.name)).slice(currentPage, currentPage + 15);
-        if (filters.sort === 'Z-A') return listGames.sort((a, b) => b.name.localeCompare(a.name)).slice(currentPage, currentPage + 15);
-        if (filters.sortOrigin === 'API') return listGames.filter(game => !(isNaN(game.id))).slice(currentPage, currentPage + 15);
-        if (filters.sortOrigin === 'Database') return listGames.filter(game => isNaN(game.id)).slice(currentPage, currentPage + 15);
-        if (filters.ratingSort === 'High to Low') return listGames.sort((a, b) => b.rating - a.rating).slice(currentPage, currentPage + 15);
-        if (filters.ratingSort === 'Low to High') return listGames.sort((a, b) => a.rating - b.rating).slice(currentPage, currentPage + 15);
-        else return listGames.slice(currentPage, currentPage + 15)
+        // if (filters.search.length > 0) return listGames.filter(game => game.name.toLowerCase().includes(filters.search.toLowerCase())).slice(currentPage, currentPage + 15);
+        // if (filters.filter.length > 0) return listGames.filter(game => game.game_genres.split(' - ').includes(filters.filter)).slice(currentPage, currentPage + 15);
+        // if (filters.sort === 'A-Z') return listGames.sort((a, b) => a.name.localeCompare(b.name)).slice(currentPage, currentPage + 15);
+        // if (filters.sort === 'Z-A') return listGames.sort((a, b) => b.name.localeCompare(a.name)).slice(currentPage, currentPage + 15);
+        // if (filters.sortOrigin === 'API') return listGames.filter(game => !(isNaN(game.id))).slice(currentPage, currentPage + 15);
+        // if (filters.sortOrigin === 'Database') return listGames.filter(game => isNaN(game.id)).slice(currentPage, currentPage + 15);
+        // if (filters.ratingSort === 'High to Low') return listGames.sort((a, b) => b.rating - a.rating).slice(currentPage, currentPage + 15);
+        // if (filters.ratingSort === 'Low to High') return listGames.sort((a, b) => a.rating - b.rating).slice(currentPage, currentPage + 15);
+        // else return listGames.slice(currentPage, currentPage + 15)
     };
 
 
